@@ -60,3 +60,13 @@ the registry — nothing else to touch.
 
 Vite · React · TypeScript · react-router (hash) · CSS Modules. `npm run lint`
 and `npm run build` should both be clean before committing.
+
+## Deploying
+
+Every push to `main` runs `.github/workflows/deploy.yml`: lint, type-check,
+build, publish `dist/` to GitHub Pages. Live at
+<https://joaoarapucas.github.io/tie-breaker/>.
+
+Asset URLs are relative (`base: './'` in `vite.config.ts`) and routing is
+hash-based, so the same build works from a repo subpath, a custom domain or
+`npm run preview` — and deep links survive a reload with no `404.html` trick.
