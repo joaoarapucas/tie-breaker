@@ -1,0 +1,24 @@
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-7);
+}
+
+.blurb {
+  margin-top: var(--sp-1);
+}
+
+.grid {
+  margin-top: var(--sp-4);
+  display: grid;
+  gap: var(--sp-4);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.empty {
+  margin-top: var(--sp-4);
+  padding: var(--sp-5);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}

@@ -1,0 +1,74 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-5);
+  padding: var(--sp-6) 0;
+}
+
+.coin {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--spin, 0deg));
+  transition: transform 1.2s cubic-bezier(0.3, 0.8, 0.35, 1);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  background: radial-gradient(circle at 35% 30%, #fff3c4, var(--coin));
+  border: 4px solid var(--coin-edge);
+  color: var(--coin-edge);
+  font: 600 48px/1 var(--sans);
+  box-shadow: var(--shadow);
+}
+
+.tails {
+  transform: rotateY(180deg);
+}
+
+.verdict {
+  min-height: 1.5em;
+  font-size: 20px;
+  color: var(--text-h);
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  min-width: 120px;
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--accent-border);
+  background: var(--accent-bg);
+  color: var(--text-h);
+  transition: background 0.15s ease;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coin {
+    transition: none;
+  }
+}
