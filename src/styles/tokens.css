@@ -14,6 +14,11 @@
   --straw: #e2c48a;
   --straw-head: #c0392b;
   --loser: #d63a3a;
+  --door: #a0673a;
+  --door-edge: #7d4e2a;
+  --door-frame: #5a3a22;
+  --door-text: #fbe9c8;
+  --door-room: #3b3330;
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -46,6 +51,8 @@
     --accent-border: rgba(192, 132, 252, 0.5);
     --accent-text: #16171d;
     --loser: #f87171;
+    --door-frame: #3d3f4a;
+    --door-room: #0e0f13;
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
