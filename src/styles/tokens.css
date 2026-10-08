@@ -11,6 +11,9 @@
   --accent-text: #fff;
   --coin: #f4d16a;
   --coin-edge: #b8933a;
+  --straw: #e2c48a;
+  --straw-head: #c0392b;
+  --loser: #d63a3a;
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -42,6 +45,7 @@
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
     --accent-text: #16171d;
+    --loser: #f87171;
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }

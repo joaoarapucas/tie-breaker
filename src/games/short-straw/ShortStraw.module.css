@@ -1,0 +1,228 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-5);
+  padding: var(--sp-6) 0;
+}
+
+/* Setup */
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  color: var(--text-h);
+}
+
+.step {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-border);
+  background: var(--accent-bg);
+  color: var(--text-h);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.step:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.step:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.count {
+  min-width: 2ch;
+  text-align: center;
+  font: 600 24px/1 var(--sans);
+}
+
+.names,
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--sp-2) var(--sp-4);
+  width: 100%;
+  max-width: 640px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.names label,
+.results li {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.input:focus {
+  outline: 2px solid var(--accent-border);
+  outline-offset: 1px;
+}
+
+.badge {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  color: var(--text-h);
+  font: 600 13px/1 var(--sans);
+}
+
+.badge:empty {
+  visibility: hidden;
+}
+
+/* Draw */
+
+.verdict {
+  min-height: 1.5em;
+  font-size: 20px;
+  color: var(--text-h);
+  text-align: center;
+}
+
+.bundle {
+  --tallest: 200px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--sp-1);
+  width: 100%;
+  height: calc(var(--tallest) + 32px);
+  padding-bottom: var(--sp-2);
+  border-bottom: 2px solid var(--border);
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 100%;
+  justify-content: flex-end;
+}
+
+/* The button is a wide tap target; the stick itself is drawn by ::before. */
+.straw {
+  position: relative;
+  width: 32px;
+  /* Hidden straws all show the same length, shorter than any real one. */
+  height: calc(var(--len, 0.3) * var(--tallest));
+  padding: 0;
+  border: 0;
+  background: none;
+  transition: height 0.9s cubic-bezier(0.3, 0.8, 0.35, 1);
+}
+
+.straw::before {
+  content: '';
+  position: absolute;
+  inset: 0 10px;
+  border-radius: 6px 6px 2px 2px;
+  background: var(--straw);
+  border-top: 14px solid var(--straw-head);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease;
+}
+
+.straw:hover:not(:disabled)::before,
+.straw:focus-visible::before {
+  transform: translateY(-6px);
+}
+
+.straw:focus-visible {
+  outline: 2px solid var(--accent-border);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.straw:disabled {
+  cursor: default;
+}
+
+/* Taken but not yet revealed: dimmed so the remaining choices stand out. */
+.straw:disabled:not(.revealed)::before {
+  opacity: 0.45;
+}
+
+.loser::before {
+  background: var(--loser);
+  border-top-color: var(--loser);
+  outline: 3px solid var(--loser);
+  outline-offset: 3px;
+}
+
+.loserRow {
+  color: var(--loser);
+  font-weight: 600;
+}
+
+.loserRow .badge {
+  background: var(--loser);
+  color: var(--accent-text);
+}
+
+.actions {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  min-width: 120px;
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--accent-border);
+  background: var(--accent-bg);
+  color: var(--text-h);
+  transition: background 0.15s ease;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+@media (max-width: 420px) {
+  .straw {
+    width: 26px;
+  }
+
+  .straw::before {
+    inset: 0 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .straw,
+  .straw::before {
+    transition: none;
+  }
+}
